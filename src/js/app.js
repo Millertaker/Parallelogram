@@ -1,10 +1,8 @@
 import canvas from './main/canvas';
 
-var myCanvas = canvas();
+(function(){
+  var el = document.getElementById('canvas-holder');
+  var holder = el.closest('.canvas-wrapper'); 
+  canvas(el, holder);
+})();
 
-
-var c = document.getElementById("canvas-holder");
-var ctx = c.getContext("2d");
-ctx.moveTo(0,0);
-ctx.lineTo(200,100);
-ctx.stroke();
