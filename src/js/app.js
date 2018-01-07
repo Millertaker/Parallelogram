@@ -1,3 +1,7 @@
+import canvas from './main/canvas';
+
+var myCanvas = canvas();
+
 
 var c = document.getElementById("canvas-holder");
 var ctx = c.getContext("2d");

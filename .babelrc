@@ -1,0 +1,11 @@
+/* 
+    ./.babelrc
+*/  
+{
+    "ignore": [
+        "node_modules/**/*"
+    ],
+    "presets": [
+        "es2015"
+    ]
+}
