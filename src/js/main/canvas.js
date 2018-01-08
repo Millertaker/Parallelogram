@@ -21,14 +21,21 @@ const Canvas = function(el, holder){
   }
 
   const drawParallelogram = function(){
-    parallelogram(circles[0],circles[1], circles[2]).draw();
+    var myParallelogram = parallelogram(circles[0],circles[1], circles[2], '#0033cc', gl);
+    var lastPoint = myParallelogram.draw();
+
+    circle(lastPoint, 1, gl, '#ff0000').draw();
+    
+
+    myParallelogram.drawLines();
+
   }
 
   const drawCircles = function(e){
 
     if(circles.length < 3){
-      var cicle = circle([e.offsetX, e.offsetY], 11, gl, '#e6e600').draw();
-      circles.push(circles);  
+      circle([e.offsetX, e.offsetY], 11, gl, '#ff0000').draw();
+      circles.push([e.offsetX, e.offsetY]);  
     } else {
       enableDragAndDrop = true;
     }
