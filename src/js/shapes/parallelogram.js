@@ -39,29 +39,15 @@ const Parallelogram = function(_pointA, _pointB, _pointC, color, gl){
       //the parallelogram is can be devided in two triengles and calculate the area of each triangle 
       //the area will be calculated based in the semiperimeter formula https://en.wikipedia.org/wiki/Semiperimeter 
       
-
       //triangle distances A B C
       var _AB = calculateDistanceBetweenPoints(pointA[0], pointA[1], pointB[0], pointB[1]);
       var _BC = calculateDistanceBetweenPoints(pointB[0], pointB[1], pointC[0], pointC[1]);
       var _AC = calculateDistanceBetweenPoints(pointA[0], pointA[1], pointC[0], pointC[1]);
 
-
-      console.log(_AB);
-      console.log(_BC);
-      console.log(_AC);
-
       var s = (_AB + _BC + _AC) / 2;
-
-      console.log(s);
-      console.log((s - _AB))
-      console.log((s - _BC))
-      console.log((s - _AC))
-
       area =  Math.sqrt( s * (s - _AB) * (s - _BC) * (s - _AC));
-
-
      
-      return area;
+      return area * 2;
     } else {
       console.log('pointD is required');
       return null;

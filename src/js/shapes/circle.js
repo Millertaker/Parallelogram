@@ -13,9 +13,7 @@ const Circle = function(_coordinates, _radius, gl, color){
 
   const drawBasedOnArea = function(area){
     gl.beginPath();
-    _radius = Math.round(area / (2 * Math.PI));
-
-    console.log(area)
+    _radius = Math.round( Math.sqrt ( area / Math.PI ));
 
     gl.arc(_coordinates[0],_coordinates[1], _radius ,0,2*Math.PI);
     this.setLineColor(color, gl);

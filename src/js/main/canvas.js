@@ -31,7 +31,7 @@ const Canvas = function(el, holder){
     var centerPoint = myParallelogram.calculateCenter();
     var paralelogramArea = myParallelogram.calculateArea();
 
-    circle(centerPoint, null, gl, '#ff0000').drawBasedOnArea(paralelogramArea);
+    circle(centerPoint, null, gl, '#ffcc00').drawBasedOnArea(paralelogramArea);
 
   }
 
