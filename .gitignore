@@ -4,7 +4,7 @@ node_modules
 credentials.js
 *~
 .DS_STORE
-devserv/css/allmin.*
+devserv/css/allmin.js
 devserv/js/app.min.js
 build
 coverage
