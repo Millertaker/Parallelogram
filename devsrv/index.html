@@ -15,11 +15,25 @@
     </div>
   </header>
   <main class="main-wrapper">
-    <div class="instructions">
-      
-      <a class="btn btn-primary" data-toggle="modal" data-target="#myModal"> About the programm </a>
-      <a class="reset btn btn-primary" href="#"> Reset canvas </a>
-    </div>  
+    <div class="row">
+      <div class="instructions col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+        <a class="btn btn-primary" data-toggle="modal" data-target="#myModal"> About the programm </a>
+        <a class="reset btn btn-primary" href="#"> Reset canvas </a>
+      </div>  
+
+      <div class="calculated-values col-lg-6 col-md-6 col-sm-6 col-xs-12 " style="">
+        <p>
+          <strong>PointA:&nbsp;</strong> <span class="pointA"> Click over the canvas </span> 
+          <strong>PointB:&nbsp;</strong> <span class="pointB"> Click over the canvas </span>  
+          <strong>PointC:&nbsp;</strong> <span class="PointC"> Click over the canvas </span> 
+          <strong>PointD:&nbsp;</strong> <span class="pointD"> Click over the canvas </span>
+        </p>
+        
+        <p><strong>Circle / Parallelogram area: &nbsp;</strong> <span class="area"> Click over the canvas </span> </p>
+        <p><strong>Circle / Parallelogram center: &nbsp;</strong> <span class="center"> Click over the canvas </span> </p>
+      </div>    
+    </div>
+    
 
     <div class="canvas-wrapper">
       <canvas id="canvas-holder" class="canvas-frame" style=""></canvas>  
