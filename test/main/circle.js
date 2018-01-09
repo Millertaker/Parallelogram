@@ -27,4 +27,12 @@ describe('Circle object test', () => {
     assert.equal(myCircle.coordinates[0], 0, 'Circle has a defined X coordinates');
     assert.equal(myCircle.coordinates[1], 0, 'Circle has a defined Y coordinates');
   });
+
+  it('Circle should have a radio based on area', () => {
+    var myCircle = circle([0,0],null, gl, '#FFFFFF');
+
+    myCircle.drawBasedOnArea(20);
+
+    assert.equal(myCircle.radius, 3, 'The of area for 30 is 2.53 rounded is 3');
+  });
 });
