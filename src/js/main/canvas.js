@@ -99,7 +99,9 @@ const Canvas = function(el, holder){
     if(circles.length < 3){
       circle([e.offsetX, e.offsetY], circlesRadius, gl, '#ff0000').draw();
       circles.push([e.offsetX, e.offsetY]);  
-    } else {
+    } 
+
+    if(circles.length === 3) {
       enableDragAndDrop = true;
     }
 
