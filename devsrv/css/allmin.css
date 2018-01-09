@@ -16,6 +16,10 @@
 .main-wrapper {
   padding: 20px;
 }
+/**
+*
+* Colors
+*/
 .canvas-wrapper {
   margin-top: 20px;
   -webkit-border-radius: 5px;
@@ -30,7 +34,3 @@
 .main-wrapper {
   padding: 20px;
 }
-/**
-*
-* Colors
-*/

@@ -6,8 +6,11 @@ import parallelogram from '../shapes/Parallelogram';
 const Canvas = function(el, holder){
   var gl = el.getContext("2d");
   var circles = [];
+  var circlesRadius = 11;
   var enableDragAndDrop = false;
+  var isDragging = false;
   var resetBtn;
+  var draggedCircle;
   
   const onResize = function(){
     el.width = holder.offsetWidth;
@@ -17,10 +20,13 @@ const Canvas = function(el, holder){
   };
 
   const onClick = function(e){
-    drawCircles(e);
+    if(!isDragging){
+      drawCircles(e);
 
-    if (circles.length === 3)
-      drawParallelogram();
+      if (circles.length === 3)
+        drawParallelogram();  
+    }
+    
     
   }
 
@@ -38,6 +44,47 @@ const Canvas = function(el, holder){
 
   }
 
+  const onMouseDown = function(e){
+    e.preventDefault();
+
+    if(enableDragAndDrop){
+      isDragging = isCircleClicked(e.offsetX, e.offsetY);;
+    }
+  }
+
+  const isCircleClicked = function(xcoor, ycoor){
+    for(var c in circles){
+      if(pointInCircle(xcoor, ycoor, circles[c][0], circles[c][1], circlesRadius)){
+        draggedCircle = c;
+
+        return true;
+      }
+    }
+  }
+
+  const pointInCircle = function(x, y, cx, cy, radius) {
+    var distancesquared = (x - cx) * (x - cx) + (y - cy) * (y - cy);
+    return distancesquared <= radius * radius;
+  }
+
+  const onMouseUp = function(e){
+    e.preventDefault();    
+
+    if(enableDragAndDrop){
+      isDragging = false;
+    }
+  }
+
+  const onMouseMove = function(e){
+    e.preventDefault();    
+
+    if(isDragging){
+      circles[draggedCircle] = [e.offsetX, e.offsetY];
+      reDraw();
+      
+    }
+  }
+
   const resetCanvas = function(e){
     e.preventDefault();
 
@@ -50,7 +97,7 @@ const Canvas = function(el, holder){
   const drawCircles = function(e){
 
     if(circles.length < 3){
-      circle([e.offsetX, e.offsetY], 11, gl, '#ff0000').draw();
+      circle([e.offsetX, e.offsetY], circlesRadius, gl, '#ff0000').draw();
       circles.push([e.offsetX, e.offsetY]);  
     } else {
       enableDragAndDrop = true;
@@ -58,10 +105,21 @@ const Canvas = function(el, holder){
 
   };
 
+  const reDraw = function(){
+    gl.clearRect(0, 0, el.width, el.height);
+    for(var i in circles){
+      circle([circles[i][0], circles[i][1]], circlesRadius, gl, '#ff0000').draw();
+    }
+    drawParallelogram();
+  }
+
   const initElement = function(){
     resetBtn = document.querySelector('a.reset');
     el.height = 800;
     el.width = holder.offsetWidth;
+    el.addEventListener('mousedown', onMouseDown);
+    el.addEventListener('mousemove', onMouseMove);
+    el.addEventListener('mouseup', onMouseUp);
     resetBtn.addEventListener('click', resetCanvas);
     window.addEventListener('resize', throttle(onResize, 100));
     el.addEventListener('click', onClick);
