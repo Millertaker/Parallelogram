@@ -10,7 +10,7 @@ gulp.task('default',  (cb) => {
   gulp.start(env);
 });
 
-gulp.task('bundle', ['clean'], (cb) => {
+gulp.task('bundle', ['clean-prod'], (cb) => {
   gulp.start('production');
 });
 

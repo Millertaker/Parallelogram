@@ -50,5 +50,5 @@ gulp.task('less-prod', function(){
 });
 
 gulp.task('production', function(cb){
-  run('clean-prod', 'less-prod', 'copy-html', 'test', 'traspile-prod-scripts',cb);
+  run('clean-prod', 'less-prod', 'copy-html', 'test-frontend', 'traspile-prod-scripts',cb);
 });
