@@ -28,8 +28,13 @@ const Canvas = function(el, holder){
     
 
     myParallelogram.drawLines();
+    var centerPoint = myParallelogram.calculateCenter();
+    var paralelogramArea = myParallelogram.calculateArea();
+
+    circle(centerPoint, null, gl, '#ff0000').drawBasedOnArea(paralelogramArea);
 
   }
+
 
   const drawCircles = function(e){
 
