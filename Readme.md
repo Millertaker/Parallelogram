@@ -8,7 +8,7 @@ simple HTML/JavaScript program that interacts with the user and draws geometrica
 
 ### Run dev server
 
-enables a watch features to transpile the LESS files and ES6 files 
+Runs a local server, the local web server enables a watch features to transpile the LESS files and ES6 files 
 
 ``` 
 npm run devsrv 
