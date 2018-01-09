@@ -37,7 +37,7 @@ gulp.task('devsrv-scripts', function() {
 });
 
 gulp.task('bundle-devsrv', function(){
-  return run('traspile-scripts', 'devsrv-scripts');
+  return run('devsrv-scripts');
 })
 
 
@@ -68,6 +68,5 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('development', function(cb){
-  run('watch-fe', 'clean', 'less', 'traspile-scripts', 'bundle-devsrv', 'webserver', cb);
-
+  run('watch-fe', 'clean', 'less', 'bundle-devsrv', 'webserver', cb);
 });

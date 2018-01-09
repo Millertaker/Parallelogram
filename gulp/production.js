@@ -24,7 +24,7 @@ var webserver = require('gulp-webserver');
 // FE task
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-gulp.task('clean', function(cb){
+gulp.task('clean-prod', function(cb){
   rimraf('./build', cb);
 });
 
@@ -40,7 +40,7 @@ gulp.task('traspile-prod-scripts', function() {
     .pipe(gulp.dest('./build/js'));
 });
 
-gulp.task('less', function(){
+gulp.task('less-prod', function(){
   gulp.src('./src/less/**/*.less')
     .pipe(plumber())
     .pipe(concat('allmin.css'))
@@ -51,5 +51,5 @@ gulp.task('less', function(){
 });
 
 gulp.task('production', function(cb){
-  run('watch-fe', 'clean', 'less', 'traspile-prod-scripts', 'copy-html',cb);
+  run('clean-prod', 'less-prod', 'traspile-prod-scripts', 'copy-html',cb);
 });
