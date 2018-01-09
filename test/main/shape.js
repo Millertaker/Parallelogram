@@ -23,7 +23,7 @@ describe('Shape object test', () => {
     var gl = el.getContext("2d");
 
     var myShape = shape();
-    shape().setLineColor('#FFFFFF', gl);
+    myShape.setLineColor('#FFFFFF', gl);
 
     assert.equal(myShape.lineColor,  '#FFFFFF', 'the line color is #FFFFFF');
   });
@@ -35,7 +35,7 @@ describe('Shape object test', () => {
     var gl = el.getContext("2d");
 
     var myShape = shape();
-    shape().setLineColor('myColor', gl);
+    myShape.setLineColor('myColor', gl);
 
     assert.equal(myShape.lineColor,  null, 'the input color doesnt has the correct hexa format');
   });

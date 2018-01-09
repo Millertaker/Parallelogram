@@ -1,5 +1,5 @@
 const Shape = function(){
-  var lineColor;
+  var lineColor = null;
 
   var validateHexa = function(inputString){
     var re = /[0-9A-Fa-f]{6}/g;
@@ -12,15 +12,16 @@ const Shape = function(){
 
   var setLineColor = function(color, gl){
     if(validateHexa(color)){
+     this.lineColor = color;
       gl.strokeStyle = color;
     }
     else
-      console.log('the color came empty');
+      console.log('Message: the color came with an invalid value');
   };
 
 
   return {
-    lineColor: null, 
+    lineColor: lineColor, 
     setLineColor: setLineColor
   }
 }
