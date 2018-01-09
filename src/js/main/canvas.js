@@ -7,9 +7,13 @@ const Canvas = function(el, holder){
   var gl = el.getContext("2d");
   var circles = [];
   var enableDragAndDrop = false;
+  var resetBtn;
   
   const onResize = function(){
     el.width = holder.offsetWidth;
+    gl = el.getContext("2d");
+    circles = [];
+    enableDragAndDrop = false;
   };
 
   const onClick = function(e){
@@ -25,7 +29,6 @@ const Canvas = function(el, holder){
     var lastPoint = myParallelogram.draw();
 
     circle(lastPoint, 1, gl, '#ff0000').draw();
-    
 
     myParallelogram.drawLines();
     var centerPoint = myParallelogram.calculateCenter();
@@ -35,6 +38,13 @@ const Canvas = function(el, holder){
 
   }
 
+  const resetCanvas = function(e){
+    e.preventDefault();
+
+    gl = el.getContext("2d");
+    circles = [];
+    enableDragAndDrop = false;
+  }
 
   const drawCircles = function(e){
 
@@ -49,8 +59,10 @@ const Canvas = function(el, holder){
   };
 
   const initElement = function(){
+    resetBtn = document.querySelector('a.reset');
     el.height = 800;
     el.width = holder.offsetWidth;
+    resetBtn.addEventListener('click', resetCanvas);
     window.addEventListener('resize', throttle(onResize, 100));
     el.addEventListener('click', onClick);
   };
