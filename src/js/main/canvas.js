@@ -42,6 +42,10 @@ const Canvas = function(el, holder){
 
     circle(centerPoint, null, gl, '#ffcc00').drawBasedOnArea(paralelogramArea);
 
+    document.querySelector('.pointD').innerHTML = `[ ${lastPoint[0]} ,  ${lastPoint[1]} ]`;
+    document.querySelector('.center').innerHTML = `[ ${centerPoint[0]} ,  ${centerPoint[1]} ]`;
+    document.querySelector('.area').innerHTML = `[ ${Math.round(paralelogramArea)} ]`;
+
   }
 
   const onMouseDown = function(e){
@@ -85,16 +89,34 @@ const Canvas = function(el, holder){
     }
   }
 
+  const clearText = function(){
+    document.querySelector('.pointA').innerHTML = `Click over the canvas`;
+    document.querySelector('.pointB').innerHTML = `Click over the canvas`;
+    document.querySelector('.pointC').innerHTML = `Click over the canvas`;
+    document.querySelector('.pointD').innerHTML = `Click over the canvas`;
+    document.querySelector('.area').innerHTML = `Click over the canvas`;
+    document.querySelector('.center').innerHTML = `Click over the canvas`;
+  }
+
   const resetCanvas = function(e){
     e.preventDefault();
 
     circles = [];
     enableDragAndDrop = false;
 
+    clearText();
+
     gl.clearRect(0, 0, el.width, el.height);
   }
 
   const drawCircles = function(e){
+
+    if(circles.length === 0)
+      document.querySelector('.pointA').innerHTML = `[ ${e.offsetX} ,  ${e.offsetY} ]`;
+    else if(circles.length === 1)
+      document.querySelector('.pointB').innerHTML = `[ ${e.offsetX} ,  ${e.offsetY} ]`;
+    else if(circles.length === 2)
+      document.querySelector('.pointC').innerHTML = `[ ${e.offsetX} ,  ${e.offsetY} ]`;
 
     if(circles.length < 3){
       circle([e.offsetX, e.offsetY], circlesRadius, gl, '#ff0000').draw();
@@ -110,6 +132,14 @@ const Canvas = function(el, holder){
   const reDraw = function(){
     gl.clearRect(0, 0, el.width, el.height);
     for(var i in circles){
+
+      if(i == 0)
+        document.querySelector('.pointA').innerHTML = `[ ${circles[i][0]} ,  ${circles[i][0]} ]`;
+      else if(i == 1)
+        document.querySelector('.pointB').innerHTML = `[ ${circles[i][0]} ,  ${circles[i][0]} ]`;
+      else if(i == 2)
+        document.querySelector('.pointC').innerHTML = `[ ${circles[i][0]} ,  ${circles[i][0]} ]`;
+
       circle([circles[i][0], circles[i][1]], circlesRadius, gl, '#ff0000').draw();
     }
     drawParallelogram();
