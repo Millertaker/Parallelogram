@@ -16,7 +16,6 @@ var plumber = require('gulp-plumber');
 
 var webpack = require('webpack-stream');
 var webpackConfig = require('./webpack.config.js');
-var webpackConfigApp = require('./webpack.config.dev.js');
 
 var webserver = require('gulp-webserver');
 
@@ -51,5 +50,5 @@ gulp.task('less-prod', function(){
 });
 
 gulp.task('production', function(cb){
-  run('clean-prod', 'less-prod', 'traspile-prod-scripts', 'copy-html',cb);
+  run('clean-prod', 'test' ,'less-prod', 'traspile-prod-scripts', 'copy-html',cb);
 });

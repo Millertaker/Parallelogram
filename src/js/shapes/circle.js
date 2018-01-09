@@ -13,9 +13,9 @@ const Circle = function(_coordinates, _radius, gl, color){
 
   const drawBasedOnArea = function(area){
     gl.beginPath();
-    _radius = Math.round( Math.sqrt ( area / Math.PI ));
+    this.radius = Math.round( Math.sqrt ( area / Math.PI ));
 
-    gl.arc(_coordinates[0],_coordinates[1], _radius ,0,2*Math.PI);
+    gl.arc(_coordinates[0],_coordinates[1], this.radius ,0,2*Math.PI);
     this.setLineColor(color, gl);
     gl.stroke();
   }
@@ -23,6 +23,8 @@ const Circle = function(_coordinates, _radius, gl, color){
   var factory = Object.create(Shape());
   factory.draw = draw;
   factory.drawBasedOnArea = drawBasedOnArea;
+  factory.coordinates = coordinates;
+  factory.radius = radius;
 
   return factory;
 }
