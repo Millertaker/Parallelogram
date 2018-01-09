@@ -90,6 +90,12 @@ const Parallelogram = function(_pointA, _pointB, _pointC, color, gl){
   factory.drawLines = drawLines;
   factory.calculateCenter = calculateCenter;
   factory.calculateArea = calculateArea;
+  factory.pointA = pointA;
+  factory.pointB = pointB;
+  factory.pointC = pointC;
+  factory.pointD = pointD;
+
+  
   
   return factory;
 }
