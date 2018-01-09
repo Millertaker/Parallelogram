@@ -16,8 +16,8 @@
   </header>
   <main class="main-wrapper">
     <div class="instructions">
-      <p>You will require do 3 clicks to draw 3 parallelogram points, the app will calculate the 4 point drawing the parallelogram after that. Given the parallelogram the app will draw a circle with the same area and same center.</p>
-      <a class="btn btn-primary" href="#"> Author </a>
+      
+      <a class="btn btn-primary" data-toggle="modal" data-target="#myModal"> About the programm </a>
       <a class="reset btn btn-primary" href="#"> Reset canvas </a>
     </div>  
 
@@ -30,8 +30,30 @@
   </main>
   <footer>
 
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">About the program</h4>
+          </div>
+          <div class="modal-body">
+            <p>You will require do 3 clicks to draw 3 parallelogram points, the app will calculate the 4 point drawing the parallelogram after that. Given the parallelogram the app will draw a circle with the same area and same center.</p>
+            <p>&nbsp;</p>
+            <p><strong>Author:&nbsp;</strong>Miller Gonzalez</p>
+            <p><strong>Email:&nbsp;</strong>millerigac@hotmail.com</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
   </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script type="text/javascript" src="js/app.min.js"></script>
 
 </body>
