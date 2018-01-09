@@ -41,9 +41,10 @@ const Canvas = function(el, holder){
   const resetCanvas = function(e){
     e.preventDefault();
 
-    gl = el.getContext("2d");
     circles = [];
     enableDragAndDrop = false;
+
+    gl.clearRect(0, 0, el.width, el.height);
   }
 
   const drawCircles = function(e){
@@ -54,7 +55,6 @@ const Canvas = function(el, holder){
     } else {
       enableDragAndDrop = true;
     }
-
 
   };
 
