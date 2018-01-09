@@ -28,6 +28,12 @@ gulp.task('clean', function(cb){
   rimraf('./build', cb);
 });
 
+gulp.task('copy-html', function() {
+  return gulp.src('./devsrv/index.html')
+    .pipe(gulp.dest('./build/'));
+});
+
+
 gulp.task('traspile-prod-scripts', function() {
   return gulp.src('./public/src/**/*.js')
     .pipe(webpack(webpackConfig))
@@ -44,5 +50,5 @@ gulp.task('less', function(){
 });
 
 gulp.task('production', function(cb){
-  run('watch-fe', 'clean', 'less', 'traspile-prod-scripts', cb);
+  run('watch-fe', 'clean', 'less', 'traspile-prod-scripts', 'copy-html',cb);
 });
