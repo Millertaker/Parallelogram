@@ -6,7 +6,7 @@ let env = process.env.NODE_ENV || 'development';
 
 require('require-dir')('./gulp')
 
-gulp.task('default', ['clean'], (cb) => {
+gulp.task('default',  (cb) => {
   gulp.start(env);
 });
 

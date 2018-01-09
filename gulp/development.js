@@ -25,10 +25,6 @@ var webserver = require('gulp-webserver');
 // FE task
 //////////////////////////////////////////////////////////////////////////////////////////////
 
-gulp.task('clean', function(cb){
-  rimraf('./build', cb);
-});
-
 
 gulp.task('devsrv-scripts', function() {
   return gulp.src('./public/devsrv/index.js')
@@ -46,12 +42,11 @@ gulp.task('less', function(){
     .pipe(plumber())
     .pipe(concat('allmin.css'))
     .pipe(less())
-    .pipe(gulp.dest('./build'))
     .pipe(gulp.dest('./devsrv/css'));
 });
 
 gulp.task('watch-fe', function(){
-  gulp.watch('./src/js/**/*.js', ['clean','bundle-devsrv']);
+  gulp.watch('./src/js/**/*.js', ['bundle-devsrv']);
   gulp.watch('./src/devsrv/**/*.js', ['bundle-devsrv']);
   gulp.watch('./src/less/**/*.less', function(){
     gulp.start('less');
@@ -68,5 +63,5 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('development', function(cb){
-  run('watch-fe', 'clean', 'less', 'bundle-devsrv', 'webserver', cb);
+  run('watch-fe', 'less', 'bundle-devsrv', 'webserver', cb);
 });
