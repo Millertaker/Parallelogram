@@ -45,8 +45,7 @@ gulp.task('less-prod', function(){
     .pipe(concat('allmin.css'))
     .pipe(less())
     .pipe(uglifycss())
-    .pipe(gulp.dest('./build/css'))
-    .pipe(gulp.dest('./devsrv/css'));
+    .pipe(gulp.dest('./build/css'));
 });
 
 gulp.task('production', function(cb){
