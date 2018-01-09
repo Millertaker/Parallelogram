@@ -45,6 +45,7 @@ gulp.task('less', function(){
     .pipe(plumber())
     .pipe(concat('allmin.css'))
     .pipe(less())
+    .pipe(uglifycss())
     .pipe(gulp.dest('./build/css'))
     .pipe(gulp.dest('./devsrv/css'));
 });
