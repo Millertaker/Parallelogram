@@ -1,4 +1,3 @@
-
 //////////////////////////////////////////////////////////////////////////////////////////////
 // Required files
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -29,45 +28,21 @@ gulp.task('clean', function(cb){
   rimraf('./build', cb);
 });
 
-
-gulp.task('devsrv-scripts', function() {
-  return gulp.src('./public/devsrv/index.js')
-    .pipe(webpack(webpackConfigApp))
-    .pipe(gulp.dest('./devsrv/js'));
+gulp.task('traspile-prod-scripts', function() {
+  return gulp.src('./public/src/**/*.js')
+    .pipe(webpack(webpackConfig))
+    .pipe(gulp.dest('./build/js'));
 });
-
-gulp.task('bundle-devsrv', function(){
-  return run('traspile-scripts', 'devsrv-scripts');
-})
-
 
 gulp.task('less', function(){
   gulp.src('./src/less/**/*.less')
     .pipe(plumber())
     .pipe(concat('allmin.css'))
     .pipe(less())
-    .pipe(gulp.dest('./build'))
+    .pipe(gulp.dest('./build/css'))
     .pipe(gulp.dest('./devsrv/css'));
 });
 
-gulp.task('watch-fe', function(){
-  gulp.watch('./src/js/**/*.js', ['clean','bundle-devsrv']);
-  gulp.watch('./src/devsrv/**/*.js', ['bundle-devsrv']);
-  gulp.watch('./src/less/**/*.less', function(){
-    gulp.start('less');
-  });
-});
-
-gulp.task('webserver', function() {
-  gulp.src('./devsrv/')
-    .pipe(webserver({
-      livereload: true,
-      directoryListing: false,
-      open: true
-    }));
-});
-
-gulp.task('development', function(cb){
-  run('watch-fe', 'clean', 'less', 'traspile-scripts', 'bundle-devsrv', 'webserver', cb);
-
+gulp.task('production', function(cb){
+  run('watch-fe', 'clean', 'less', 'traspile-prod-scripts', cb);
 });
