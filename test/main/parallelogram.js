@@ -38,5 +38,14 @@ describe('Parallelogram object test', () => {
     assert.equal(pointD[1], 358, 'PointD y exists');
     
   });
+
+  it('parallelogram should have area', () => {
+    var myParallelogram = parallelogram( [ 705 , 352 ] , [ 792 , 218 ],  [ 947 , 224 ] , '#FFFFFF', gl);
+    var pointD = myParallelogram.draw();
+    myParallelogram.pointD = pointD;
+    var area = myParallelogram.calculateArea();
+  
+    assert.equal(Math.round(area), 21292, 'The parallelogram area exists');  
+  });
   
 });
